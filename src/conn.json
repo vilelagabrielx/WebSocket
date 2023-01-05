@@ -1,0 +1,10 @@
+{
+
+    "hostname_banco": "",
+    "user_banco" : "",
+    "senha_banco" : "",
+    "nome_database_principal":"" ,
+    "porta_banco" : "",
+    "porta_Backend" : "",
+    "hostname_servidor": ""
+}
