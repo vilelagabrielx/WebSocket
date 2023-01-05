@@ -21,6 +21,8 @@ const Mensagem = database.define('t_mensagen',{
     }
 
 },{
+    charset: 'utf8mb4',
+
     timestamps: false
 })
 
