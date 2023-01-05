@@ -1,11 +1,9 @@
-import { Socket } from 'dgram';
 import express from  'express';
 import http from 'http';
-import { emit } from 'process';
 import socketio from 'socket.io';
-
+const db = require("./conn").default
 const app = express();
-
+const config = require('./conn.json')
 const server = http.Server(app);
 
 const io = socketio(server);
@@ -17,10 +15,52 @@ io.on('connect',(socket) =>{
         status : true,
         message: 'Conexão estabelecida com o servidor'
     });
-    socket.on('teste', (res) =>{
-        console.log('recebi',res);
-
-        io.to(socket.id).emit(res);
+    
+    
+    const addMensagem = async (user,mensagem) => {
+        const Msg = require('./mensagem');
+        db.sync();
+        var datahoje = new Date();
+        var dia = String(datahoje.getDate()).padStart(2, '0');
+        var mes = String(datahoje.getMonth() + 1).padStart(2, '0');
+        var ano = datahoje.getFullYear();
+        var horas = datahoje.getHours();
+        var minutos = datahoje.getMinutes();
+        var dataAtual = dia + '-' + mes + '-' + ano + ' ' + horas + ':' + minutos;
+        await Msg.create({
+            user : user,
+            mensagem : mensagem,
+            data : dataAtual
+        
+            })
+        
+    }
+    const getMensagem = async () => {
+        const Msg = require('./mensagem');
+        db.sync();
+        let mensagens = await Msg.findAll({
+            order :  [['id', 'ASC']]
+        }
+        )
+        return mensagens
+    }
+    (async() =>{
+        let teste = await getMensagem()
+        let resp = {"user":'',"mensagem":'' }
+        teste.forEach(element => {
+            resp['user'] = element['dataValues']['user']
+            resp['mensagem'] = element['dataValues']['mensagem']
+            // console.log('oioi')
+            // console.log(resp)
+            socket.emit('teste',resp)
+        });
+    })();
+    
+    socket.on('teste', async (res) =>{
+      
+    addMensagem(res.user,res.mensagem)
+    
+    socket.broadcast.emit('teste',res);
         
     })
 })
@@ -30,7 +70,7 @@ app.get('/',(req,res) => {
 }
 )
 
-server.listen(3333,() => {
-    console.log('SERVIDOR INICIADO PORTA',3333);
+server.listen(config['porta_Backend'],() => {
+    console.log('SERVIDOR INICIADO PORTA',config['porta_Backend']);
 }
 )
