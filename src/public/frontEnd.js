@@ -1,40 +1,17 @@
-const config = {
-    'hostname_servidor':'',
-    'porta_Backend':''
-};
 
-const socket = io(`http://${config['hostname_servidor']}:${config['porta_Backend']}`,{
+document.getElementById("Mensagem").addEventListener("keypress", submitOnEnter);
 
-    transports: ['websocket']
+
+document.querySelector("#form-mensagem").addEventListener("submit", function(e){
+    document.getElementById("form-mensagem").reset(); 
+    
 });
 
-socket.on('teste',(res) =>{
-    escMensagem(res.user,res.mensagem)
-})
 
-function enviar(){
-    event.preventDefault();
-    
-    const user = document.querySelector('#usuario').value; 
-    const mensagem = document.querySelector('#Mensagem').value;
-    // console.log(document.body.scrollHeight)
-    socket.emit('teste',{
-        user,mensagem
-    })
-    escMensagem('EU', mensagem)
-   
+
+function submitOnEnter(event){
+    if(event.which === 13){
+	console.log('click enter')
+	document.getElementById("btn-enviar").click();   
 }
-function escMensagem(usuario,mensagem){
-let bg = usuario === 'EU' ? 'alert-success' : 'alert-light'
-let mensagemHtml = document.querySelector('#mensagens').innerHTML;
-mensagemHtml += `<div class="alert ${bg}">
-                    <h4 class ="m-0">${usuario}</h4> - 
-                    <p class ="m-0" >${mensagem}<p/>
-                </div>`;
-document.querySelector('#mensagens').innerHTML = mensagemHtml;
-// console.log('scrollTo ' + document.body.scrollHeight)
-document.querySelector('#mensagens').scrollTo(0,document.querySelector('#mensagens').scrollHeight);
-document.querySelector('#Mensagem').value = ''
-
-
 }
