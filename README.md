@@ -1,4 +1,4 @@
-# Chat de teste utilizando WebSockets
+# Chat de texto utilizando WebSockets
 Um chat simples que utiliza a tecnologia dos websockets com nodeJS e Socket.IO.
 
 # Descrição
