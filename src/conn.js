@@ -6,7 +6,7 @@ const user_banco = process.env.user_banco;
 const senha_banco = process.env.senha_banco;
 const hostname_banco = process.env.hostname_banco;
 const porta_banco = process.env.porta_banco;
-
+const tipo_banco = process.env.tipo_database
 console.log(nome_database_principal,user_banco,senha_banco,hostname_banco,porta_banco)
 import Sequelize from 'sequelize';
 
@@ -18,16 +18,16 @@ function wrapper()
                     (nome_database_principal,user_banco,senha_banco,
                         {
                             host: hostname_banco,
-                            dialect: 'mysql',
+                            dialect: tipo_banco,
                             port:porta_banco
                         }
                     )
                 return sequelize
             } catch (err) 
-                    {
-                        
-                        console.error('Erro ao se conectar com o banco de dados : '+err);
-                    }
+                        {
+                            
+                            console.error('Erro ao se conectar com o banco de dados : '+err);
+                        }
     }
     
 export default wrapper();

@@ -1,33 +1,33 @@
 const Sequelize = require('sequelize');
 const database = require('./conn').default;
 const Mensagem = database.define
-('t_mensagen',
-    {
-        id:{
-            type: Sequelize.INTEGER,
-            autoIncrement: true,
-            allowNull: false,
-            primaryKey: true
-        },
-        user: {
-            type: Sequelize.STRING,
-            allowNull: false,
+    ('t_mensagen',
+        {
+            id:{
+                type: Sequelize.INTEGER,
+                autoIncrement: true,
+                allowNull: false,
+                primaryKey: true
             },
-        mensagem: {
-            type: Sequelize.TEXT,
-            allowNull: false
+            user: {
+                type: Sequelize.STRING,
+                allowNull: false,
                 },
-        data: {
-            type: Sequelize.STRING,
-            allowNull: true
-            }
+            mensagem: {
+                type: Sequelize.TEXT,
+                allowNull: false
+                    },
+            data: {
+                type: Sequelize.STRING,
+                allowNull: true
+                }
 
-    },
-    {
-        charset: 'utf8mb4',
-        timestamps: false
-    }
-)
+        },
+        {
+            charset: 'utf8mb4',
+            timestamps: false
+        }
+    )
 
 
 
