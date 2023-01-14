@@ -2,7 +2,7 @@
 Um chat simples que utiliza a tecnologia dos websockets com nodeJS e Socket.IO.
 
 # Descrição
-O chat em questão foi feito com objetivo de aprimorar meus conhecimentos em websocket e tem como funcionadade principal o envio de mensagens em um único grupo.
+O chat em questão foi feito com objetivo de aprimorar meus conhecimentos em websockets e tem como funcionadade principal o envio de mensagens em um único grupo.
 
 # Instalação
 
