@@ -1,10 +1,10 @@
 {
 
-    "hostname_banco": "",
-    "user_banco" : "",
-    "senha_banco" : "",
-    "nome_database_principal":"" ,
-    "porta_banco" : "",
-    "porta_Backend" : "",
-    "hostname_servidor": ""
+    "hostname_banco": "10.0.0.87",
+    "user_banco" : "chat",
+    "senha_banco" : "12345678",
+    "nome_database_principal":"bd_websocket" ,
+    "porta_banco" : "3306",
+    "porta_Backend" : "3000",
+    "hostname_servidor": "localhost"
 }
