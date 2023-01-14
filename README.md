@@ -21,3 +21,4 @@ npm install
 ```  
 npm run dev
 ```  
+Após a finalização da instalação e execução do aplicativo, o chat estará sendo executado no ip do servidor passado( Chamado "hostname_servidor" no arquivo ".env") e na porta passada( Chamado "porta_Backend" no arquivo .env). 
