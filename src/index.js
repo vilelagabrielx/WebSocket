@@ -34,7 +34,7 @@ try
                                     try
                                         {
                                             const Msg = require('./mensagem');
-                                            db.sync();
+                                            await db.sync();
                                             var datahoje = new Date();
                                             var dia = String(datahoje.getDate()).padStart(2, '0');
                                             var mes = String(datahoje.getMonth() + 1).padStart(2, '0');
