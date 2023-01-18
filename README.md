@@ -1,5 +1,5 @@
 # Chat de texto utilizando WebSockets
-Um chat simples que utiliza a tecnologia dos websockets com nodeJS e Socket.IO.
+Um chat simples que utiliza a tecnologia dos websockets com nodeJS e Socket.IO no BackEnd e um FrontEnd com Bootstrap.
 
 # Descrição
 O chat em questão foi feito com objetivo de aprimorar meus conhecimentos em websockets e tem como funcionadade principal o envio de mensagens em um único grupo.
